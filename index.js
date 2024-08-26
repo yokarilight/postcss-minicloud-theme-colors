@@ -1,4 +1,5 @@
 const postcss = require('postcss');
+const { isColor } = require('./utils');
 
 const defaults = {
   'function': 'transformColor',
@@ -13,14 +14,18 @@ const transformColor = (options, theme, group, defaultValue) => {
   const [lightColor, darkColor] = options.groups[group] || [];
   const color = theme === 'dark' ? darkColor : lightColor;
   if (!color) {
-    return defaultValue;
+    if (isColor(defaultValue)) {
+      return defaultValue;
+    }
+
+    throw new Error(`The color ${defaultValue} is invalid`);
   }
 
   if (options.useCustomProperties) {
     return color.startsWith('--') ? `var(${color})` : color;
   }
 
-  return options.colors[color] || defaultValue;
+  return options.colors[color] || color;
 };
 
 module.exports = postcss.plugin('postcss-minicloud-theme-color', (options) => {
@@ -36,7 +41,11 @@ module.exports = postcss.plugin('postcss-minicloud-theme-color', (options) => {
 
     const getValue = (value, theme) => {
       return value.replace(reGroup, (match, group) => {
-        return transformColor(options, theme, group, match);
+        try {
+          return transformColor(options, theme, group, match);
+        } catch (err) {
+          throw style.error(err.message, { plugin: 'postcss-minicloud-theme-color', word: group });
+        }
       });
     };
 
