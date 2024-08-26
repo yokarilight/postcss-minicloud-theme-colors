@@ -1,4 +1,4 @@
-# postcss-minicloud-theme-color
+# postcss-minicloud-theme-colors
 
 A PostCSS plugin that automatically transforms color groups for light and dark themes, allowing you to define colors once and apply them across your project with ease. This plugin also supports CSS custom properties (variables) for more flexible theming.
 
@@ -13,7 +13,7 @@ A PostCSS plugin that automatically transforms color groups for light and dark t
 Install via npm:
 
 ```bash
-npm install postcss-minicloud-theme-color --save-dev
+npm install postcss-minicloud-theme-colors --save-dev
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ npm install postcss-minicloud-theme-color --save-dev
 module.exports = {
   plugins: [
     require('postcss-nested'), // If you use nested CSS
-    require('postcss-minicloud-theme-color')({
+    require('postcss-minicloud-theme-colors')({
       function: 'transformColor',
       groups: {
         primary: ['#ffffff', '#000000'],
@@ -65,7 +65,7 @@ You can also use CSS custom properties (variables) to define your theme colors:
 // postcss.config.js
 module.exports = {
   plugins: [
-    require('postcss-minicloud-theme-color')({
+    require('postcss-minicloud-theme-colors')({
       function: 'transformColor',
       groups: {
         primary: ['--primary-color', '--primary-dark-color'],
