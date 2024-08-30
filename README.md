@@ -22,7 +22,7 @@ npm install postcss-minicloud-theme-colors --save-dev
 module.exports = {
   plugins: [
     require('postcss-nested'), // If you use nested CSS
-    require('postcss-minicloud-theme-colors')({
+    require('postcss-minicloud-theme-colors').default({
       function: 'transformColor',
       groups: {
         primary: ['#ffffff', '#000000'],
@@ -33,6 +33,35 @@ module.exports = {
       nestingPlugin: 'nested', // Set to 'nesting' if using postcss-nesting
     }),
     require('autoprefixer'),
+  ]
+};
+```
+
+If your project supports ES model, use the following config:
+```javascript
+// postcss.config.mjs
+import postcssNested from 'postcss-nested';
+import minicloudThemeColors from 'postcss-minicloud-theme-colors';
+import autoprefixer from 'autoprefixer';
+
+export default {
+  plugins: [
+    postcssNested,
+    minicloudThemeColors.default({
+      function: 'transformColor',
+      groups: {
+        primary: ['#ffffff', '#000000'],
+        secondary: ['#f0f0f0', '#333333']
+      },
+      colors: {
+        white: '#ffffff',
+        black: '#000000'
+      },
+      useCustomProperties: true,
+      darkThemeSelector: 'html[data-theme="dark"]',
+      nestingPlugin: 'nested',
+    }),
+    autoprefixer,
   ]
 };
 ```
@@ -65,7 +94,7 @@ You can also use CSS custom properties (variables) to define your theme colors:
 // postcss.config.js
 module.exports = {
   plugins: [
-    require('postcss-minicloud-theme-colors')({
+    require('postcss-minicloud-theme-colors').default({
       function: 'transformColor',
       groups: {
         primary: ['--primary-color', '--primary-dark-color'],
