@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "description": "A postcss plugin that could generate light and dark mode css",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/*"
   ],
