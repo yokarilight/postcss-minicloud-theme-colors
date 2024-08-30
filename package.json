@@ -1,6 +1,6 @@
 {
   "name": "postcss-minicloud-theme-colors",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A postcss plugin that could generate light and dark mode css",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
