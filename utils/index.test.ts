@@ -1,4 +1,4 @@
-const { isColor } = require('./index');
+import { isColor } from './index';
 
 describe('isColor Function', () => {
   describe('Hex Color Validation', () => {

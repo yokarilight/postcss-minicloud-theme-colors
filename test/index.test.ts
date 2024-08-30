@@ -1,7 +1,7 @@
-const postcss = require('postcss');
-const nested = require('postcss-nested');
-const plugin = require('../index.js');
-const { normalizeCSS } = require('../utils/index');
+import postcss from 'postcss';
+import nested from 'postcss-nested';
+import plugin from '../index';
+import { normalizeCSS } from '../utils/index';
 
 describe('postcss-minicloud-theme-color', () => {
   it('should transform colors for light theme', async () => {
@@ -135,7 +135,8 @@ describe('postcss-minicloud-theme-color', () => {
         }),
       ]).process(inputCSS, { from: undefined });
     } catch (err) {
-      expect(err.message).toContain('The color transformColor(nonexistent) is invalid');
+      const error = err as Error;
+      expect(error.message).toContain('The color transformColor(nonexistent) is invalid');
     }
   });
 });

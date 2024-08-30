@@ -4,6 +4,7 @@
   "description": "A postcss plugin that could generate light and dark mode css",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "engines": {
@@ -18,12 +19,21 @@
   "bugs": {
     "url": "https://github.com/yokarilight/postcss-minicloud-theme-colors/issues"
   },
-  "keywords": ["postcss", "postcss-plugin", "darkmode"],
+  "keywords": [
+    "postcss",
+    "postcss-plugin",
+    "darkmode"
+  ],
   "author": "yokarilight",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.5.0",
     "jest": "^29.7.0",
     "postcss": "^8.4.41",
-    "postcss-nested": "^6.2.0"
+    "postcss-nested": "^6.2.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
